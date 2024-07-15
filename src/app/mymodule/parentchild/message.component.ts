@@ -19,7 +19,7 @@ import {
 })
 export class MessageComponent implements AfterContentInit {
   @Input('message') message: string = ''; // Receive message from parent component
-  @ContentChild('loduRef') loduRef!: ElementRef<HTMLDivElement>;
+  @ContentChild( 'appRef' ) appRef!: ElementRef<HTMLDivElement>;
   @Output() eventE = new EventEmitter<{ [id: string]: string }>();
   displayMessage(message: string) {
     this.message = message; // Update displayed message

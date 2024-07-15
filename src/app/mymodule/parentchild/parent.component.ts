@@ -10,7 +10,7 @@ import { MessageComponent } from './message.component'; // Import child componen
       component.
     </p>
     <app-message [message]="message" (eventE)="getEvent($event)">
-      <h1 #loduRef>Oye lodu</h1>
+      <h1 #appRef>Oye app</h1>
     </app-message>
     <br />
   `,
