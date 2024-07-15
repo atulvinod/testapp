@@ -1,0 +1,7 @@
+<app-parent>
+</app-parent>
+<button (click)="showAlert()" >Alert random value</button>
+<button (click)="sendRequest()"> Send request</button>
+<p>{{ 10 | multiplyByValue : 2}}</p>
+
+<p>{{ 60 | clientPipe |  async}}</p>

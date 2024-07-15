@@ -1,0 +1,15 @@
+<div class="todoroot">
+    <h1>Todo application</h1>
+    <div class="container">
+        <div *ngFor="let todo of todos">
+            <todo-list-item [content]="todo.content" [id]="todo.id" (deleteEvent)="deleteTodo($event)"/>
+        </div>
+    </div>
+    <div>
+        <form (ngSubmit)="addTodo()" [formGroup]="newTodoForm">
+            <input type="text" name="todo-name" id="todo-name" formControlName="content">
+            <button [disabled]="!newTodoForm.valid">Add</button>
+        </form>
+    </div>
+    <button (click)="nav()">redirect to forms</button>
+</div>

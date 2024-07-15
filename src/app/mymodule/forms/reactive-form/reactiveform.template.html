@@ -1,0 +1,47 @@
+<h1>Reactive form test</h1>
+<div>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div>
+            <label for="hero-name">Hero Name</label>
+            <input type="text" name="hero-name" id="hero-name" formControlName="heroName">
+            <div><span *ngIf="form.get('heroName')?.hasError('required')">Heroname is required</span></div>
+            <div><span *ngIf="form.get('heroName')?.hasError('naughty')">Heroname is naughty</span></div>
+            <div><span *ngIf="form.get('heroName')?.hasError('illegalName')">Heroname is illegal</span></div>
+
+        </div>
+        <div>
+            <label for="hero-alter-ego">Alter ego name</label>
+            <input type="text" name="hero-alter-ego" id="hero-alter-ego" formControlName="heroAlterEgo">
+        </div>
+        <div>
+            <label for="hero-power">Hero powers</label>
+            <select name="hero-power" id="hero-power" formControlName="heroPower">
+                <option value="super-strength">Super super-strength</option>
+                <option value="heat-vision">Heat vision</option>
+                <option value="night-vision">Night vision</option>
+            </select>
+        </div>
+        <div>
+            <label for="hero-skills">Hero skills</label>
+            <div *ngFor="let control of heroSkillInputs; let i = index">
+                <div>
+                    <label for="skill-name-{{i}}">Skill name</label>
+                    <input type="text" name="skill-name-{{i}}" id="skill-name-{{i}}" [formControl]=control>
+                </div>
+            </div>
+            <div><button (click)="addNewHeroSkill()" type="button">Add new skill</button></div>
+        </div>
+        <div *ngIf="form.valid; else invalid ">
+            <span>Is valid</span>
+        </div>
+        <ng-template #invalid>
+            <h1>Invalid</h1>
+        </ng-template>
+        <div>
+            <input type="submit" value="Submit" [disabled]="!form.valid">
+        </div>
+    </form>
+</div>
+<div>
+    <a [routerLink]="['/template']" >go to template</a>
+</div>
